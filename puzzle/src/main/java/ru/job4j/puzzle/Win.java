@@ -3,24 +3,20 @@ package ru.job4j.puzzle;
 public class Win {
 
     public static boolean check(int[][] board) {
-        return checkHorizontal(board) || checkVertical(board);
-    }
-
-    public static int findOfIndexWithOne(int [][] board) {
-        int index = 0;
+        boolean result = false;
         for (int i = 0; i < board.length; i++) {
-            if (board[i][i] == 1) {
-                index = i;
+            if (board[i][i] == 1 && checkHorizontal(board, i) || checkVertical(board, i)) {
+                result = true;
+                break;
             }
         }
-        return index;
+        return result;
     }
 
-    public static boolean checkHorizontal(int[][] board) {
+    public static boolean checkHorizontal(int[][] board, int index) {
         boolean result = true;
-        int index = findOfIndexWithOne(board);
         for (int i = 0; i < board.length; i++) {
-            if (board[index][i] == 0) {
+            if (board[index][i] != 1) {
                 result = false;
                 break;
             }
@@ -28,11 +24,10 @@ public class Win {
         return result;
     }
 
-    public static boolean checkVertical(int[][] board) {
+    public static boolean checkVertical(int[][] board, int index) {
         boolean result = true;
-        int index = findOfIndexWithOne(board);
         for (int i = 0; i < board.length; i++) {
-            if (board[i][index] == 0) {
+            if (board[i][index] != 1) {
                 result = false;
                 break;
             }
