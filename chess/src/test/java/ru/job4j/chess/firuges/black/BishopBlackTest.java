@@ -19,7 +19,6 @@ public class BishopBlackTest {
         Assert.assertArrayEquals(expextedSteps, steps);
     }
 
-
     @Test
     public void copy() {
         BishopBlack bishopBlack = new BishopBlack(Cell.A1);
