@@ -3,15 +3,12 @@ package ru.job4j.chess.firuges.black;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.chess.firuges.Cell;
-import ru.job4j.chess.firuges.Figure;
 
 public class BishopBlackTest {
 
     @Test
     public void position() {
-        BishopBlack bishopBlack = new BishopBlack(Cell.A1);
-        Cell expectedPosition = bishopBlack.position();
-        Assert.assertEquals(expectedPosition, Cell.A1);
+        Assert.assertEquals(new BishopBlack(Cell.A1).position(), Cell.A1);
     }
 
     @Test
@@ -26,7 +23,12 @@ public class BishopBlackTest {
     @Test
     public void copy() {
         BishopBlack bishopBlack = new BishopBlack(Cell.A1);
-        Figure expectedCopy = bishopBlack.copy(Cell.A1);
-        Assert.assertEquals(expectedCopy.position(), bishopBlack.position());
+        Assert.assertEquals(bishopBlack.copy(Cell.B1).position(), Cell.B1);
+    }
+
+    @Test
+    public void isDiagonal() {
+        Assert.assertTrue(new BishopBlack(Cell.A1).isDiagonal(Cell.A1, Cell.H8));
+        Assert.assertFalse(new BishopBlack(Cell.G5).isDiagonal(Cell.G5, Cell.E8));
     }
 }
